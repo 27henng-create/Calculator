@@ -12,19 +12,39 @@
 .button {
 
     height: 100px;
-    width: 100px;
-    padding: 10px;
+    width: 150px;
+    padding: 20px;
     background-color: lightgrey;
     align-items: center;
     margin: auto;
 }
 
-.function {
-    background-color: aqua;
-}
-
 .button-group {
     align-content:center;
+    display:grid;
+    grid-template-columns: 100px 100px 100px 100px;
+    gap: 5px;
+}
+
+.display {
+  border: 5px solid;
+  margin-bottom: 5px;
+  padding: 15px 10px;
+  text-align: left;
+  font-family: "Courier New", Courier, monospace;
+  font-size: xx-large;
+  background-color: white;
+}
+
+.calculator {
+    width:550px; 
+    height: 550px;
+    background-color:lightgrey ;
+}
+
+.operations {
+    align-self: right;
+    padding: 10px;
     display:grid;
     grid-template-columns: 100px 100px 100px 100px;
     gap: 5px;

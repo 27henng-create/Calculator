@@ -7,11 +7,10 @@
         <title>Document</title>
 </head>
 <body>
-<div class="calculator"></div>
+<div class="calculator">
+<h2 style="text-align: left;">Calculator</h2>
  <div class="display">0</div>
    <div class="button-group">
-        <h2 style="text-align: center;">Calculator</h2>
-        <button class="button clear" onclick="cleardisplay()";>CLEAR</button>
         <button class="button number">1</button>
         <button class="button number">2</button>   
         <button class="button number">3</button>  
@@ -24,13 +23,17 @@
         <button class="button decimal">.</button>
         <button class="button number">0</button>
         <button class="button negative">(-)</button>
+   </div>
+     <div class="operations">
+        <button class="button clear" onclick="cleardisplay()";>CLEAR</button>
         <button class="button operation">+</button>
         <button class="button operation">-</button>
         <button class="button operation">x</button>
         <button class="button operation">/</button>
         <button class="button enter">ENTER</button>
+     </div>
         <div id="container"></div>
-   </div>
+ </div>
 </div>
         <script src="calculator.js"></script>
 
