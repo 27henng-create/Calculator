@@ -1,40 +1,51 @@
 const display = document.getElementsByClassName("display");
 const clearbtn = document.getElementsByClassName("clear");
 
-let cureentIntput = '', currentOperation = '', previousInput = '';
+let cureentIntput = ''
+let currentOperation = ''
+let previousInput = '';
 
-function appendNumber() {
-    cureentIntput += num;
+function appendNumber(number) {
+    cureentIntput += number;
     updateDisplay();
 }
 
-function appendOperation() {
-    if (!currentInput) return;
-    if (previousInput) calculate();
-    currentOperation = op;
+function appendOperation(operation) {
+    if (currentInput === '') return;
+    if (previousInput !== '') calculate();
+    currentOperation = operation;
     previousInput = currentInput;
     currentInput = '';
     updateDisplay();
 }
 
 function calculate() {
-    if (!previousInput || !currentInput) return;
-    let result;
-    const prev = parseFloat(previousInput), curr = parseFloat(currentInput);
+    if (previousInput === '' || currentInput === '') return;
+    let result = null;
+    const prev = parseFloat(previousInput)
+    const curr = parseFloat(currentInput);
     switch(currentOperation) {
         case '+': result = prev + curr; break;
         case '-': result = prev - curr; break;
         case 'x': result = prec * curr; break;
-        case '/': if (curr === 0) return alert("ERROR Cannot Divide by Zero");
-        result = prev / curr; break 
+        case '/': result = curr !== 0 ? prev / curr : 'Error Cannot Divide by Zero'; break;
+        default: return;
     }
-    currentInput = result.toString(display);
+    
+    currentInput = result.toString();
     currentOPeration = '';
     previousInput = '';
     updateDisplay();
 }
 
 function clearDisplay() {
-    currentInput = previousInput = currentOperation = '';
+    currentInput = '';
+    previousInput = '';
+    currentOperation = '';
     updateDisplay();
+}
+
+function updateDisplay() {
+    document.getElementbyId('display').value =
+    `${previousInput} ${currentOperation} ${currentInput}`;
 }
