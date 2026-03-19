@@ -1,23 +1,30 @@
 const display = document.getElementsByClassName("display");
 const clearbtn = document.getElementsByClassName("clear");
 
-let cureentIntput = ''
-let currentOperation = ''
+let cureentIntput = '';
+let currentOperation = '';
 let previousInput = '';
 
 function appendNumber(number) {
+    addEventListener("click", () => appendNumber);
     cureentIntput += number;
-    updateDisplay();
+    updateDisplay(previousInput, currentOperation, cureentIntput);
 }
 
-function appendOperation(operation) {
-    if (currentInput === '') return;
-    if (previousInput !== '') calculate();
-    currentOperation = operation;
-    previousInput = currentInput;
-    currentInput = '';
-    updateDisplay();
-}
+const addButton = document.getElementById('add');
+addButton.addEventListener("click", () => {
+    currentOperation = '+'
+    console.log(currentOperation)
+});
+
+// function appendOperation(operation) {
+//     if (currentInput === '') return;
+//     if (previousInput !== '') calculate();
+//     currentOperation = operation;
+//     previousInput = currentInput;
+//     currentInput = '';
+//     updateDisplay();
+// }
 
 function calculate() {
     if (previousInput === '' || currentInput === '') return;
@@ -33,19 +40,20 @@ function calculate() {
     }
     
     currentInput = result.toString();
-    currentOPeration = '';
+    currentOperation = '';
     previousInput = '';
     updateDisplay();
 }
 
-function clearDisplay() {
+function clearDisplay(previousInput, currentOperation, cureentIntput) {
     currentInput = '';
     previousInput = '';
     currentOperation = '';
     updateDisplay();
 }
 
-function updateDisplay() {
-    document.getElementbyId('display').value =
+function updateDisplay(previousInput, currentOperation, currentInput) {
+    document.getElementsByClassName('display').value =
     `${previousInput} ${currentOperation} ${currentInput}`;
 }
+
